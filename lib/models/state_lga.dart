@@ -1,13 +1,13 @@
-class NigerianStateModel {
+class StateLGAModel {
   String state;
   String alias;
   List<String> lgas;
 
-  NigerianStateModel(
+  StateLGAModel(
       {required this.state, required this.alias, required this.lgas});
 
-  factory NigerianStateModel.fromJson(Map<String, dynamic> json) =>
-      NigerianStateModel(
+  factory StateLGAModel.fromJson(Map<String, dynamic> json) =>
+      StateLGAModel(
           state: json['state'],
           alias: json['alias'],
           lgas: json['lgas'].cast<String>());

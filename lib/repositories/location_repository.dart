@@ -1,21 +1,174 @@
-import 'package:multi_level_dropdown/models/nigeria_state.dart';
+import 'package:multi_level_dropdown/models/state_city.dart';
+import 'package:multi_level_dropdown/models/state_lga.dart';
 
 class LocationRepository {
-  List<Map<String, Object>> getAll() => _nigeriaLocations;
+  List<Map<String, Object>> getAllLGAs() => stateLGAs;
+  List<Map<String, Object>> getAllCities() => stateCities;
 
-  getLocalByState(String state) => _nigeriaLocations
-      .map((stateMap) => NigerianStateModel.fromJson(stateMap))
-      .where((element) => element.state == state)
-      .map((item) => item.lgas)
-      .expand((element) => element)
-      .toList();
+  getLocalByState(String state) =>
+      stateLGAs
+          .map((stateMap) => StateLGAModel.fromJson(stateMap))
+          .where((element) => element.state == state)
+          .map((item) => item.lgas)
+          .expand((element) => element)
+          .toList();
 
-  List<String> getStates() => _nigeriaLocations
-      .map((stateMap) => NigerianStateModel.fromJson(stateMap))
-      .map((item) => item.state)
-      .toList();
+  getCitiesByState(String state) =>
+      stateCities.map((e) => StateCityModel.fromJson(e))
+          .where((element) => element.state == state)
+          .map((e) => e.cities)
+          .expand((element) => element).toList();
 
-  final List<Map<String, Object>> _nigeriaLocations = [
+  List<String> getStates() =>
+      stateLGAs
+          .map((stateMap) => StateLGAModel.fromJson(stateMap))
+          .map((item) => item.state)
+          .toList();
+
+  final List<Map<String, Object>> stateCities = [
+    {
+      "state": "Akwa Ibom",
+      "alias": "akwa_ibom",
+      "cities": ["Eket", "Ikot Ekpene", "Oron", "Uyo"]
+    },
+    {
+      "state": "Bauchi",
+      "alias": "bauchi",
+      "cities": ["Bauchi"]
+    },
+    {
+      "state": "Benue",
+      "alias": "benue",
+      "cities": ["Makurdi"]
+    },
+    {
+      "state": "Borno",
+      "alias": "borno",
+      "cities": ["Bama", "Maiduguri"]
+    },
+    {
+      "state": "Bayelsa",
+      "alias": "bayelsa",
+      "cities": ["Yenagoa"]
+    },
+    {
+      "state": "Delta",
+      "alias": "delta",
+      "cities": ["Sapele"]
+    },
+    {
+      "state": "Ebonyi",
+      "alias": "ebonyi",
+      "cities": ["Abakaliki"]
+    },
+    {
+      "state": "Ekiti",
+      "alias": "ekiti",
+      "cities": ["Ado Ekiti"]
+    },
+    {
+      "state": "Enugu",
+      "alias": "enugu",
+      "cities": ["Enugu", "Nsukka", "Agbani", "Awgu", "Udi", "Oji-River"]
+    },
+    {
+      "state": "Gombe",
+      "alias": "gombe",
+      "cities": ["Gombe"]
+    },
+    {
+      "state": "Jigawa",
+      "alias": "jigawa",
+      "cities": ["Dutse"]
+    },
+    {
+      "state": "Imo",
+      "alias": "imo",
+      "cities": ["Okigwe", "Orlu"]
+    },
+    {
+      "state": "Kaduna",
+      "alias": "kaduna",
+      "cities": ["Kaduna", "Zaria"]
+    },
+    {
+      "state": "Kebbi",
+      "alias": "kebbi",
+      "cities": ["Birnin Kebbi"]
+    },
+    {
+      "state": "Kogi",
+      "alias": "kogi",
+      "cities": ["Lokoja", "Okene"]
+    },
+    {
+      "state": "Lagos",
+      "alias": "lagos",
+      "cities": ["Agege", "Ikeja"]
+    },
+    {
+      "state": "Katsina",
+      "alias": "katsina",
+      "cities": ["Funtua", "Katsina"]
+    },
+    {
+      "state": "Kwara",
+      "alias": "kwara",
+      "cities": ["Offa", "Ilorin"]
+    },
+    {
+      "state": "Nasarawa",
+      "alias": "nasarawa",
+      "cities": ["Lafia"]
+    },
+    {
+      "state": "Niger",
+      "alias": "niger",
+      "cities": ["Bida", "Suleja"]
+    },
+    {
+      "state": "Ogun",
+      "alias": "ogun",
+      "cities": ["Ijebu Ode", "Shagamu"]
+    },
+    {
+      "state": "Ondo",
+      "alias": "ondo",
+      "cities": ["Owo"]
+    },
+    {
+      "state": "Rivers",
+      "alias": "rivers",
+      "cities": ["Port Harcourt"]
+    },
+    {
+      "state": "Oyo",
+      "alias": "oyo",
+      "cities": ["Oyo"]
+    },
+    {
+      "state": "Osun",
+      "alias": "osun",
+      "cities": ["Iwo", "Osogbo"]
+    },
+    {
+      "state": "Taraba",
+      "alias": "taraba",
+      "cities": ["Wukari"]
+    },
+    {
+      "state": "Yobe",
+      "alias": "yobe",
+      "cities": ["Nguru", "Potiskum"]
+    },
+    {
+      "state": "Zamfara",
+      "alias": "zamfara",
+      "cities": ["Gusau"]
+    }
+  ];
+
+  final List<Map<String, Object>> stateLGAs = [
     {
       "state": "Adamawa",
       "alias": "adamawa",
